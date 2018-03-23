@@ -18,19 +18,21 @@ class Lyrical:
 
         for verse in verses:
             song = song + " " + verse.get_text().lower()
-            
 
+        return song
+
+    def getWordCount(self, song):
         wordlist = song.split()
 
         x = self.wordListToFreqDict(wordlist)
         y = self.sortFreqDict(x)
-    
+
         for z in y:
             print z
 
-    def wordListToFreqDict(self, wordlist) : 
+    def wordListToFreqDict(self, wordlist):
         wordfreq = [wordlist.count(p) for p in wordlist]
-        return dict(zip(wordlist,wordfreq))
+        return dict(zip(wordlist, wordfreq))
 
     def sortFreqDict(self, freqdict):
         aux = [(freqdict[key], key) for key in freqdict]
@@ -39,4 +41,4 @@ class Lyrical:
         return aux
 
 
-Lyrical("http://www.metrolyrics.com/walking-on-the-moon-lyrics-the-police.html").getLyrics()
+print Lyrical("http://www.metrolyrics.com/walking-on-the-moon-lyrics-the-police.html").getLyrics()
